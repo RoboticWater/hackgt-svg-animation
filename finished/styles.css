@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,700&display=swap');
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: #f52839;
+}
+
+code {
+    color: #f52839;
+}
+
+.centered {
+    padding: 20px 0;
+    margin: 0 auto 200px auto;
+    width: 560px;
+}
+
+img {
+    height: 400px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+.logo-svg {
+    height: 400px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+.chain-link {
+    fill:none;
+    stroke:#000000;
+    stroke-width:16;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
+}
+
+.hov0 {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hov0:hover {
+    opacity: 0;
+    transform: rotate(30deg);
+}
+
+.hov1 path {
+    transition: transform 0.5s ease;
+}
+
+.hov1:hover .link0 {
+    transform: translate(-50px, -50px);
+}
+
+.hov1:hover .link1 {
+    transform: translate(50px, 50px);
+}
+
+
+.hov2 path {
+    transition: stroke-width 0.5s ease;
+}
+
+.hov2 .link1 {
+    transition-delay: 0.1s;
+}
+
+.hov2:hover path {
+    stroke-width: 0;
+}
+
+.hov2-5 path {
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.hov2-5:hover path {
+    stroke-dasharray: 20;
+    stroke-dashoffset: 30;
+}
+
+.hov3 path {
+    transition: stroke-dashoffset 0.5s ease;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 250;
+}
+
+.hov3:hover path {
+    stroke-dashoffset: 250;
+}
