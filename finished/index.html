@@ -88,6 +88,8 @@
 
         <p><code>&lt;g/&gt;</code>'s are just groups, they're basically <code>&lt;div/&gt;</code>'s for SVGs.</p>
 
+        <p>There are other elements, but we won't get into them, just understand that SVGs can be addressed like any other HTML element, so whether it's <code>&lt;path/&gt;</code>'s or something else, it's all the same.</p>
+
         <p>With this knowledge, you're probably pretty dangerous with SVGs right now. Most animations are just a bunch of simple transforms combined together to look good. I should state it here: <b>good technical art is mainly just dedication.</b> The skills aren't too difficult to grasp, it just takes practice to make better-looking stuff.</p>
 
         <p>But the tutorial is not over; we still have stuff to learn!</p>
@@ -185,7 +187,97 @@
 
         <p>Now, thus far, we've been doing hover transitions, which are nice, but not exactly animations, so let's make an animation.</p>
 
-        <p>Animations are basically like transitions, but you have more fine grained control over how the transition progresses, and you can trigger it without hovering. They use <code>@keyframes</code></p>
+        <p>Animations are basically like transitions, but you have more fine grained control over how the transition progresses, and you can trigger it without hovering. They use <code>@keyframes</code> to define different movements in the animation.</p>
+
+        <svg version="1.1" class="logo-svg anim0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 142.703 257.562" style="enable-background:new 0 0 142.703 257.562;" xml:space="preserve">
+            <path class="chain-link link1" d="M64.695,125.193
+	l-11.172-11.172c-10.313-10.313-10.313-27.033,0-37.345l0,0c10.313-10.313,27.033-10.313,37.345,0l28.631,28.631
+    c10.313,10.313,10.313,27.033,0,37.345l0,0c-10.313,10.313-27.033,10.313-37.345,0"/>
+            <path class="chain-link link0" d="M78.304,40.092
+	l11.172,11.172c10.313,10.313,10.313,27.033,0,37.345l0,0c-10.313,10.313-27.033,10.313-37.345,0L23.499,59.978
+	c-10.313-10.313-10.313-27.033,0-37.345l0,0c10.313-10.313,27.033-10.313,37.345,0"/>
+            <g class="word word-chain">
+                <path d="M39.304,181.52v2.973h-3.493v-3.162c0-2.973-1.18-4.767-3.87-4.767c-2.643,0-3.87,1.793-3.87,4.767v17.462
+                    c0,2.974,1.227,4.767,3.87,4.767c2.69,0,3.87-1.793,3.87-4.767v-4.295h3.493v4.106c0,5.002-2.36,8.306-7.457,8.306
+                    c-5.05,0-7.41-3.304-7.41-8.306V181.52c0-5.003,2.36-8.307,7.41-8.307C36.944,173.214,39.304,176.517,39.304,181.52z"/>
+                <path d="M46.337,191.714v14.866h-3.681v-33.036h3.681v14.866h8.118v-14.866h3.681v33.036h-3.681v-14.866H46.337z"/>
+                <path d="M65.642,199.926l-1.274,6.654H60.97l6.324-33.036h5.333l6.324,33.036H75.27l-1.274-6.654H65.642z M66.113,196.764h7.363
+                    l-3.729-19.067L66.113,196.764z"/>
+                <path d="M85.513,173.544v33.036h-3.682v-33.036H85.513z"/>
+                <path d="M92.545,206.58h-3.304v-33.036h4.672l7.646,23.88v-23.88h3.257v33.036h-3.823l-8.447-26.712V206.58z"/>
+            </g>
+            <g class="word word-link">
+                <path d="M65.977,245.551v-33.037h3.682v29.687h9.438v3.351H65.977z"/>
+                <path d="M85.565,212.514v33.037h-3.682v-33.037H85.565z"/>
+                <path d="M92.597,245.551h-3.304v-33.037h4.672l7.646,23.881v-23.881h3.257v33.037h-3.822l-8.448-26.713V245.551z"/>
+                <path d="M114.261,231.203l-1.935,3.257v11.091h-3.682v-33.037h3.682v15.952l8.778-15.952h3.729l-8.354,15.056l8.637,17.981h-3.776
+                    L114.261,231.203z"/>
+            </g>
+        </svg>
+
+        <p>I could've made it not repeat, but then you might have missed it.</p>
+
+        <p>Here, you can see how <code>@keyframes</code> work. You define the style of a particular element at a given % of completion, and then apply the keyframes as an animation. This is important: you don't define a keyframe at a <i>time</i>, but a <i>percentage</i>, so if you want to add more movements to the animation, note that you'll have to extend the time yourself to compensate.</p>
+
+        <p>Also note the <code>transform-origin: Xpx Xpx;</code> I put in the chain link CSS. This is because, by default the chain links will rotate around the entire shape's origin, which is the top left point. Here, I just kinda eye-balled where I thought the center of each chain was. I could make it more precise, but I don't really care.</p>
+
+        <p>Let's extend the animation now:</p>
+
+        <svg version="1.1" class="logo-svg anim0 anim1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 142.703 257.562" style="enable-background:new 0 0 142.703 257.562;" xml:space="preserve">
+            <path class="chain-link link1" d="M64.695,125.193
+	l-11.172-11.172c-10.313-10.313-10.313-27.033,0-37.345l0,0c10.313-10.313,27.033-10.313,37.345,0l28.631,28.631
+    c10.313,10.313,10.313,27.033,0,37.345l0,0c-10.313,10.313-27.033,10.313-37.345,0"/>
+            <path class="chain-link link0" d="M78.304,40.092
+	l11.172,11.172c10.313,10.313,10.313,27.033,0,37.345l0,0c-10.313,10.313-27.033,10.313-37.345,0L23.499,59.978
+	c-10.313-10.313-10.313-27.033,0-37.345l0,0c10.313-10.313,27.033-10.313,37.345,0"/>
+            <g class="word word-chain">
+                <path d="M39.304,181.52v2.973h-3.493v-3.162c0-2.973-1.18-4.767-3.87-4.767c-2.643,0-3.87,1.793-3.87,4.767v17.462
+                    c0,2.974,1.227,4.767,3.87,4.767c2.69,0,3.87-1.793,3.87-4.767v-4.295h3.493v4.106c0,5.002-2.36,8.306-7.457,8.306
+                    c-5.05,0-7.41-3.304-7.41-8.306V181.52c0-5.003,2.36-8.307,7.41-8.307C36.944,173.214,39.304,176.517,39.304,181.52z"/>
+                <path d="M46.337,191.714v14.866h-3.681v-33.036h3.681v14.866h8.118v-14.866h3.681v33.036h-3.681v-14.866H46.337z"/>
+                <path d="M65.642,199.926l-1.274,6.654H60.97l6.324-33.036h5.333l6.324,33.036H75.27l-1.274-6.654H65.642z M66.113,196.764h7.363
+                    l-3.729-19.067L66.113,196.764z"/>
+                <path d="M85.513,173.544v33.036h-3.682v-33.036H85.513z"/>
+                <path d="M92.545,206.58h-3.304v-33.036h4.672l7.646,23.88v-23.88h3.257v33.036h-3.823l-8.447-26.712V206.58z"/>
+            </g>
+            <g class="word word-link">
+                <path d="M65.977,245.551v-33.037h3.682v29.687h9.438v3.351H65.977z"/>
+                <path d="M85.565,212.514v33.037h-3.682v-33.037H85.565z"/>
+                <path d="M92.597,245.551h-3.304v-33.037h4.672l7.646,23.881v-23.881h3.257v33.037h-3.822l-8.448-26.713V245.551z"/>
+                <path d="M114.261,231.203l-1.935,3.257v11.091h-3.682v-33.037h3.682v15.952l8.778-15.952h3.729l-8.354,15.056l8.637,17.981h-3.776
+                    L114.261,231.203z"/>
+            </g>
+        </svg>
+
+        <p>That's basically it. From here, it's just refining the animation until you like it. You can also make the animation not repeat, so it only happens once on page load, so something like this logo isn't obnoxiously repeating.</p>
+
+        <p>As a bonus, here's a seamless repeating animation:</p>
+
+        <svg version="1.1" class="art-svg anim2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 263.1 301.7" style="enable-background:new 0 0 263.1 301.7;" xml:space="preserve">
+    <style type="text/css">
+        .st0{fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+        
+            .st1{fill:none;stroke:#F9DF19;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
+        .st2{fill:#FFFFFF;}
+    </style>
+    <path d="M149.6,148.8c1.5,9.5-10,18-25.9,18c-15.9,0-27.5-8.5-25.9-18c1.4-8.5,12.9-14.7,25.9-14.7
+        C136.6,134.1,148.2,140.3,149.6,148.8z"/>
+    <polyline class="st0" points="56.5,159.1 73.1,117.2 174.2,117.2 190.8,159.1 "/>
+    <path class="st1" d="M231.4,93.3L166,119.4c-16.8,6.7-27.8,22.9-27.8,40.9v134.1"/>
+    <path class="st1" d="M44,46l51.5,26c10,5,16.3,15.3,16.3,26.5v172.1"/>
+    <path class="st1" d="M123.6,227V112.9c0-6.2,1-12.4,3-18.3l5.5-16"/>
+    <path class="st2" d="M190.8,159.1h-45c-4.5,4.6-12.5,7.7-22.2,7.7s-17.7-3.1-22.2-7.7h-45L40,201h167.3L190.8,159.1z"/>
+    <polyline class="st0" points="56.5,159.1 40,201 207.3,201 190.8,159.1 "/>
+    </svg>
+
+        <p>Basically, all you have to do is make sure that you use <code>linear</code> instead of <code>ease</code> and make the animation end where it starts.</p>
+
+        <p>In this case I know the <code>dasharray</code> is 12, so I set the <code>stroke-dashoffset</code> to 24 (moving it a full dash and a full gap forward) back to its original position.</p>
+
+        <p>The direction of the movement is dependent on which direction the path is pointed (basically, which end point is the start vertex). In this case, I accidently made one of the paths move a different direction. This is fixable, but I don't really care; it looks neat.</p>
     </div>
 </body>
 </html>

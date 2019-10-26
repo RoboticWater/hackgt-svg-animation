@@ -89,9 +89,89 @@ img {
 .hov3 path {
     transition: stroke-dashoffset 0.5s ease;
     stroke-dashoffset: 0;
-    stroke-dasharray: 250;
+    stroke-dasharray: 260;
 }
 
 .hov3:hover path {
-    stroke-dashoffset: 250;
+    stroke-dashoffset: 260;
+}
+
+.anim0 .link0 {
+    animation: anim0-link0 1s ease infinite;
+    transform-origin: 50px 50px;
+}
+
+.anim0 .link1 {
+    animation: anim0-link1 1s ease infinite;
+    transform-origin: 100px 100px;
+}
+
+@keyframes anim0-link0 {
+    0% {
+        transform: translate(-50px, -50px) rotate(90deg);
+    }
+    33% {
+        transform: translate(10px, 10px) rotate(50deg);
+    }
+    66% {
+        transform: translate(10px, 10px);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+@keyframes anim0-link1 {
+    0% {
+        transform: translate(50px, 50px) rotate(90deg);
+    }
+    33% {
+        transform: translate(-10px, -10px) rotate(50deg);
+    }
+    66% {
+        transform: translate(-10px, -10px);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+.anim1 .word-chain {
+    animation: anim1-text 1s ease infinite;
+}
+
+.anim1 .word-link {
+    animation: anim1-text 1s ease infinite 0.1s;
+}
+
+@keyframes anim1-text {
+    0% {
+        transform: translate(0, 50px);
+        opacity: 0;
+    }
+    100% {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.art-svg {
+    height: 400px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+
+.anim2 .st1 {
+    animation: anim2 1s linear infinite;
+}
+
+@keyframes anim2 {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 24;
+    }
 }
